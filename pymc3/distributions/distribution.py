@@ -11,6 +11,14 @@ __all__ = ['DensityDist', 'Distribution', 'Continuous',
            'Discrete', 'NoDistribution', 'TensorType', 'draw_values']
 
 class _Unpickling(object):
+    """ Special value to signal the constructor of :py:class:`Distribution`
+    that it is being called from the pickle machinery to create a
+    copy of a previous instance.
+
+    Note that it is the _class_ :py:class:`_Unpickling` that is used
+    as special value, not an _instance_ of it. This allows for
+    the faster identity test using ` is `, rather than `isinstance`.
+    """
     pass
 
 class Distribution(object):
